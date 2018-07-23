@@ -1,6 +1,6 @@
 # Tray.io Challenge
 
-Guide to running the code challenge, built by Andrei Nae-Stroie. The application was written in Java using the Spring Boot framework. The application uses no database, it saves the objects created in memory. 
+Guide to running the code challenge built by Andrei Nae-Stroie. The application was written in Java using the Spring Boot framework. The application uses no database, it saves the objects created in memory. 
 
 ### Installation and Running
 
