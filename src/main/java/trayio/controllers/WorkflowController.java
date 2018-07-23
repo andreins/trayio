@@ -1,6 +1,5 @@
 package trayio.controllers;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class WorkflowController {
 
-    private final AtomicInteger workflowId = new AtomicInteger();
+    private static final AtomicInteger workflowId = new AtomicInteger();
     private static ArrayList<Workflow> workflows = new ArrayList<>();
 
     public static Workflow getWorkflow(int id){
@@ -46,5 +45,10 @@ public class WorkflowController {
         Object value = ex.getValue();
         return String.format("{\"error\": \"%s should be a valid %s, currently %s\"}",
                 name, type, value);
+    }
+
+    public static void reset(){
+        workflows = new ArrayList<>();
+        workflowId.set(0);
     }
 }

@@ -24,6 +24,7 @@ public class WorkflowExecutionControllerTests {
 
     @Test
     public void createWorkflowExecution() throws Exception {
+        this.mockMvc.perform(get("/reset"));
 
         this.mockMvc.perform(get("/create-workflow?steps=1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))

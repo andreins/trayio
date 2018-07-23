@@ -23,7 +23,7 @@ public class WorkflowControllerTests {
 
     @Test
     public void createWorkflow() throws Exception {
-
+        this.mockMvc.perform(get("/reset")); // needed because there is no database 
         this.mockMvc.perform(get("/create-workflow?steps=5")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.stepsNumber").value(5));
@@ -36,6 +36,7 @@ public class WorkflowControllerTests {
 
     @Test
     public void getWorkflow() throws Exception {
+        this.mockMvc.perform(get("/reset")); // needed because there is no database
         this.mockMvc.perform(get("/create-workflow?steps=5"));
         this.mockMvc.perform(get("/create-workflow?steps=8"));
 

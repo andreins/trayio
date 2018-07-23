@@ -16,6 +16,14 @@ public class WorkflowExecutionController {
     private ArrayList<WorkflowExecution> workflowExecutions = new ArrayList<>();
     private final AtomicInteger workflowExecutionId = new AtomicInteger();
 
+    @RequestMapping("/reset")
+    public void reset(){
+        workflowExecutions = new ArrayList<>();
+        workflowExecutionId.set(0);
+        System.out.println("TESTTEST" + workflowExecutions);
+        WorkflowController.reset();
+    }
+
     @RequestMapping("/create-workflow-execution")
     public String createWorkflowExecution(@RequestParam(value="workflow-id") int workflowId,
                                                      @RequestParam(value="step", defaultValue = "0") String step){
